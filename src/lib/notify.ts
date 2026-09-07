@@ -8,9 +8,7 @@ export async function logActivity(userId: string, action: string, detail?: strin
   await supabase.from("activity_logs").insert({ user_id: userId, action, detail: detail ?? null });
 }
 
-/** Notify every healthcare worker (used for consultation requests and shared reports). */
+/** Notify every healthcare worker (consultation requests, shared reports). */
 export async function notifyWorkers(title: string, body: string) {
-  const { data } = await supabase.from("profiles").select("id").eq("role", "healthcare_worker");
-  const rows = (data ?? []).map((w: { id: string }) => ({ user_id: w.id, title, body }));
-  if (rows.length) await supabase.from("notifications").insert(rows);
+  await supabase.rpc("notify_all_workers", { _title: title, _body: body });
 }

@@ -404,6 +404,10 @@ export type Database = {
         }
         Returns: boolean
       }
+      notify_all_workers: {
+        Args: { _body: string; _title: string }
+        Returns: undefined
+      }
     }
     Enums: {
       app_role: "patient" | "healthcare_worker"
