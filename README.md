@@ -537,17 +537,6 @@ The application should feel like a working healthcare MVP suitable for demonstra
 
 simcxe basic layout is done so forget about those features that are alr present focus mainly on implementing rest of the logic in continutio nto this web app and please change the questionnaier https://orthotoolkit.com/koos/ questionaire should be from this and like the first part shouldd be age sex height and weight to calculate bmi and like that as hey will be required for fianl score calculation pl ease make it
 
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://gait-guide-health.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/f25f356f-aa1f-492a-b994-3e7f670389ee).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
 
 ## Development
 
