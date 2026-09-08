@@ -41,7 +41,7 @@ export function ChoiceCard({
   icon: ComponentType<{ className?: string }>;
   title: string;
   text: string;
-  to: ComponentProps<typeof Link>["to"];
+  to: NonNullable<ComponentProps<typeof Link>["to"]>;
 }) {
   return (
     <Link

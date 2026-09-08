@@ -11,6 +11,10 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as GetStartedRouteImport } from './routes/get-started'
+import { Route as LoginIndexRouteImport } from './routes/login/index'
+import { Route as LoginPatientRouteImport } from './routes/login/patient'
+import { Route as LoginWorkerRouteImport } from './routes/login/worker'
+import { Route as SignupIndexRouteImport } from './routes/signup/index'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +26,86 @@ const GetStartedRoute = GetStartedRouteImport.update({
   path: '/get-started',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginIndexRoute = LoginIndexRouteImport.update({
+  id: '/login/',
+  path: '/login/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginPatientRoute = LoginPatientRouteImport.update({
+  id: '/login/patient',
+  path: '/login/patient',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LoginWorkerRoute = LoginWorkerRouteImport.update({
+  id: '/login/worker',
+  path: '/login/worker',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupIndexRoute = SignupIndexRouteImport.update({
+  id: '/signup/',
+  path: '/signup/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/get-started': typeof GetStartedRoute
+  '/login/patient': typeof LoginPatientRoute
+  '/login/worker': typeof LoginWorkerRoute
+  '/login/': typeof LoginIndexRoute
+  '/signup/': typeof SignupIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/get-started': typeof GetStartedRoute
+  '/login/patient': typeof LoginPatientRoute
+  '/login/worker': typeof LoginWorkerRoute
+  '/login': typeof LoginIndexRoute
+  '/signup': typeof SignupIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/get-started': typeof GetStartedRoute
+  '/login/patient': typeof LoginPatientRoute
+  '/login/worker': typeof LoginWorkerRoute
+  '/login/': typeof LoginIndexRoute
+  '/signup/': typeof SignupIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/get-started'
+  fullPaths:
+    | '/'
+    | '/get-started'
+    | '/login/patient'
+    | '/login/worker'
+    | '/login/'
+    | '/signup/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/get-started'
-  id: '__root__' | '/' | '/get-started'
+  to:
+    | '/'
+    | '/get-started'
+    | '/login/patient'
+    | '/login/worker'
+    | '/login'
+    | '/signup'
+  id:
+    | '__root__'
+    | '/'
+    | '/get-started'
+    | '/login/patient'
+    | '/login/worker'
+    | '/login/'
+    | '/signup/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   GetStartedRoute: typeof GetStartedRoute
+  LoginPatientRoute: typeof LoginPatientRoute
+  LoginWorkerRoute: typeof LoginWorkerRoute
+  LoginIndexRoute: typeof LoginIndexRoute
+  SignupIndexRoute: typeof SignupIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +124,44 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof GetStartedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login/': {
+      id: '/login/'
+      path: '/login'
+      fullPath: '/login/'
+      preLoaderRoute: typeof LoginIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login/patient': {
+      id: '/login/patient'
+      path: '/login/patient'
+      fullPath: '/login/patient'
+      preLoaderRoute: typeof LoginPatientRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login/worker': {
+      id: '/login/worker'
+      path: '/login/worker'
+      fullPath: '/login/worker'
+      preLoaderRoute: typeof LoginWorkerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup/': {
+      id: '/signup/'
+      path: '/signup'
+      fullPath: '/signup/'
+      preLoaderRoute: typeof SignupIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   GetStartedRoute: GetStartedRoute,
+  LoginPatientRoute: LoginPatientRoute,
+  LoginWorkerRoute: LoginWorkerRoute,
+  LoginIndexRoute: LoginIndexRoute,
+  SignupIndexRoute: SignupIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

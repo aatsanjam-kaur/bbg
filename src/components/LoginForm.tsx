@@ -66,7 +66,7 @@ export function LoginForm({ role }: { role: "patient" | "healthcare_worker" }) {
           onChange={(e) => setValues((v) => ({ ...v, email: e.target.value }))}
           placeholder="you@example.com"
         />
-        {errors.email && <p className="text-xs text-destructive">{errors.email}</p>}
+        {errors["email"] && <p className="text-xs text-destructive">{errors["email"]}</p>}
       </div>
       <div className="space-y-2">
         <Label htmlFor="password">Password</Label>
@@ -78,7 +78,7 @@ export function LoginForm({ role }: { role: "patient" | "healthcare_worker" }) {
           onChange={(e) => setValues((v) => ({ ...v, password: e.target.value }))}
           placeholder="••••••••"
         />
-        {errors.password && <p className="text-xs text-destructive">{errors.password}</p>}
+        {errors["password"] && <p className="text-xs text-destructive">{errors["password"]}</p>}
       </div>
       <Button type="submit" className="w-full rounded-full" size="lg" disabled={loading}>
         {loading ? "Signing in…" : "Login"}
