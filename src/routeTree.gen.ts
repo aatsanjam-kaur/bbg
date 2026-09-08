@@ -10,20 +10,34 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ForgotPasswordRouteImport } from './routes/forgot-password'
 import { Route as GetStartedRouteImport } from './routes/get-started'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as LoginIndexRouteImport } from './routes/login/index'
 import { Route as LoginPatientRouteImport } from './routes/login/patient'
 import { Route as LoginWorkerRouteImport } from './routes/login/worker'
 import { Route as SignupIndexRouteImport } from './routes/signup/index'
+import { Route as SignupPatientRouteImport } from './routes/signup/patient'
+import { Route as SignupWorkerRouteImport } from './routes/signup/worker'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ForgotPasswordRoute = ForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const GetStartedRoute = GetStartedRouteImport.update({
   id: '/get-started',
   path: '/get-started',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoginIndexRoute = LoginIndexRouteImport.update({
@@ -46,29 +60,51 @@ const SignupIndexRoute = SignupIndexRouteImport.update({
   path: '/signup/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SignupPatientRoute = SignupPatientRouteImport.update({
+  id: '/signup/patient',
+  path: '/signup/patient',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SignupWorkerRoute = SignupWorkerRouteImport.update({
+  id: '/signup/worker',
+  path: '/signup/worker',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/get-started': typeof GetStartedRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/login/patient': typeof LoginPatientRoute
   '/login/worker': typeof LoginWorkerRoute
+  '/signup/patient': typeof SignupPatientRoute
+  '/signup/worker': typeof SignupWorkerRoute
   '/login/': typeof LoginIndexRoute
   '/signup/': typeof SignupIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/get-started': typeof GetStartedRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/login/patient': typeof LoginPatientRoute
   '/login/worker': typeof LoginWorkerRoute
+  '/signup/patient': typeof SignupPatientRoute
+  '/signup/worker': typeof SignupWorkerRoute
   '/login': typeof LoginIndexRoute
   '/signup': typeof SignupIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/forgot-password': typeof ForgotPasswordRoute
   '/get-started': typeof GetStartedRoute
+  '/reset-password': typeof ResetPasswordRoute
   '/login/patient': typeof LoginPatientRoute
   '/login/worker': typeof LoginWorkerRoute
+  '/signup/patient': typeof SignupPatientRoute
+  '/signup/worker': typeof SignupWorkerRoute
   '/login/': typeof LoginIndexRoute
   '/signup/': typeof SignupIndexRoute
 }
@@ -76,34 +112,50 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/forgot-password'
     | '/get-started'
+    | '/reset-password'
     | '/login/patient'
     | '/login/worker'
+    | '/signup/patient'
+    | '/signup/worker'
     | '/login/'
     | '/signup/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/forgot-password'
     | '/get-started'
+    | '/reset-password'
     | '/login/patient'
     | '/login/worker'
+    | '/signup/patient'
+    | '/signup/worker'
     | '/login'
     | '/signup'
   id:
     | '__root__'
     | '/'
+    | '/forgot-password'
     | '/get-started'
+    | '/reset-password'
     | '/login/patient'
     | '/login/worker'
+    | '/signup/patient'
+    | '/signup/worker'
     | '/login/'
     | '/signup/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ForgotPasswordRoute: typeof ForgotPasswordRoute
   GetStartedRoute: typeof GetStartedRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
   LoginPatientRoute: typeof LoginPatientRoute
   LoginWorkerRoute: typeof LoginWorkerRoute
+  SignupPatientRoute: typeof SignupPatientRoute
+  SignupWorkerRoute: typeof SignupWorkerRoute
   LoginIndexRoute: typeof LoginIndexRoute
   SignupIndexRoute: typeof SignupIndexRoute
 }
@@ -117,11 +169,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/forgot-password': {
+      id: '/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/forgot-password'
+      preLoaderRoute: typeof ForgotPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/get-started': {
       id: '/get-started'
       path: '/get-started'
       fullPath: '/get-started'
       preLoaderRoute: typeof GetStartedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/login/': {
@@ -152,14 +218,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SignupIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/signup/patient': {
+      id: '/signup/patient'
+      path: '/signup/patient'
+      fullPath: '/signup/patient'
+      preLoaderRoute: typeof SignupPatientRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/signup/worker': {
+      id: '/signup/worker'
+      path: '/signup/worker'
+      fullPath: '/signup/worker'
+      preLoaderRoute: typeof SignupWorkerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ForgotPasswordRoute: ForgotPasswordRoute,
   GetStartedRoute: GetStartedRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
   LoginPatientRoute: LoginPatientRoute,
   LoginWorkerRoute: LoginWorkerRoute,
+  SignupPatientRoute: SignupPatientRoute,
+  SignupWorkerRoute: SignupWorkerRoute,
   LoginIndexRoute: LoginIndexRoute,
   SignupIndexRoute: SignupIndexRoute,
 }
