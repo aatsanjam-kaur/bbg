@@ -1,4 +1,4 @@
-import type { ComponentType, ReactNode } from "react";
+import type { ComponentProps, ComponentType, ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
 
@@ -41,7 +41,7 @@ export function ChoiceCard({
   icon: ComponentType<{ className?: string }>;
   title: string;
   text: string;
-  to: string;
+  to: ComponentProps<typeof Link>["to"];
 }) {
   return (
     <Link
